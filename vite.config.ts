@@ -3,11 +3,11 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 import {defineConfig} from 'vite';
 
-export default defineConfig(() => {
-  // Support GitHub Pages repository path (e.g. /Vibe-Match/ or custom GITHUB_REPOSITORY),
-  // while keeping root '/' in AI Studio dev/prod environment.
+export default defineConfig(({ command }) => {
+  // Support GitHub Pages repository path (/Vibe-Match/), custom GITHUB_REPOSITORY,
+  // or relative paths, while preserving standard root in local development server.
   const repoName = process.env.GITHUB_REPOSITORY ? `/${process.env.GITHUB_REPOSITORY.split('/')[1]}/` : undefined;
-  const base = process.env.VITE_BASE_PATH || repoName || (process.env.NODE_ENV === 'production' && process.env.GITHUB_PAGES ? '/Vibe-Match/' : './');
+  const base = process.env.VITE_BASE_PATH || repoName || (command === 'build' ? '/Vibe-Match/' : '/');
 
   return {
     base,
