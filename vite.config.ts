@@ -4,10 +4,10 @@ import path from 'path';
 import {defineConfig} from 'vite';
 
 export default defineConfig(({ command }) => {
-  // Support GitHub Pages repository path (/Vibe-Match/), custom GITHUB_REPOSITORY,
-  // or relative paths, while preserving standard root in local development server.
+  // Support GitHub Pages repository path (/Vibe-Match-/ or /Vibe-Match/), custom GITHUB_REPOSITORY,
+  // while preserving standard root in local development server.
   const repoName = process.env.GITHUB_REPOSITORY ? `/${process.env.GITHUB_REPOSITORY.split('/')[1]}/` : undefined;
-  const base = process.env.VITE_BASE_PATH || repoName || (command === 'build' ? '/Vibe-Match/' : '/');
+  const base = process.env.VITE_BASE_PATH || repoName || (command === 'build' ? '/Vibe-Match-/' : '/');
 
   return {
     base,

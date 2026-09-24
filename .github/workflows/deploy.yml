@@ -37,7 +37,7 @@ jobs:
 
       - name: Build with Vite
         env:
-          VITE_BASE_PATH: /Vibe-Match/
+          VITE_BASE_PATH: /Vibe-Match-/
         run: npx vite build
 
       - name: Setup Pages

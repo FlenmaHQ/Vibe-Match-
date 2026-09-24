@@ -8,7 +8,9 @@
       // Single Page Apps for GitHub Pages
       // Redirects 404 paths back to the repository base URL
       var pathSegments = window.location.pathname.split('/');
-      var repoIndex = pathSegments.indexOf('Vibe-Match');
+      var repoIndex = pathSegments.findIndex(function(seg) {
+        return seg === 'Vibe-Match-' || seg === 'Vibe-Match';
+      });
       var base = repoIndex !== -1 ? '/' + pathSegments.slice(1, repoIndex + 1).join('/') + '/' : '/';
       window.location.replace(base);
     </script>
