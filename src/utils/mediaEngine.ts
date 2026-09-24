@@ -287,7 +287,10 @@ export async function prepareStoryMedia(photoUrl: string, song?: Song): Promise<
     );
   });
 
-  const file = new File([blob], 'vibe-match-story.jpg', { type: 'image/jpeg' });
+  const file = new File([blob], 'vibe-match-story.jpg', {
+    type: 'image/jpeg',
+    lastModified: Date.now(),
+  });
   return {
     file,
     mimeType: 'image/jpeg',
@@ -341,7 +344,10 @@ export async function preparePostMedia(photoUrl: string, song?: Song): Promise<P
     );
   });
 
-  const file = new File([blob], 'vibe-match-post.jpg', { type: 'image/jpeg' });
+  const file = new File([blob], 'vibe-match-post.jpg', {
+    type: 'image/jpeg',
+    lastModified: Date.now(),
+  });
   return {
     file,
     mimeType: 'image/jpeg',
@@ -382,7 +388,10 @@ export async function prepareWhatsAppStatusMedia(photoUrl: string, song?: Song):
     );
   });
 
-  const file = new File([blob], 'vibe-match-whatsapp-status.jpg', { type: 'image/jpeg' });
+  const file = new File([blob], 'vibe-match-whatsapp-status.jpg', {
+    type: 'image/jpeg',
+    lastModified: Date.now(),
+  });
   return {
     file,
     mimeType: 'image/jpeg',
@@ -556,7 +565,10 @@ export async function prepareReelMedia(
 
       const ext = selectedMime.includes('mp4') ? 'mp4' : 'webm';
       const videoBlob = new Blob(chunks, { type: selectedMime });
-      const file = new File([videoBlob], `vibe-match-reel.${ext}`, { type: selectedMime });
+      const file = new File([videoBlob], `vibe-match-reel.${ext}`, {
+        type: selectedMime,
+        lastModified: Date.now(),
+      });
 
       const hasAudio = Boolean(audioBuffer);
       const explanationNote = hasAudio

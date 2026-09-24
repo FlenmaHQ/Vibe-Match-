@@ -159,7 +159,10 @@ export async function executeSocialShare(
     // Fallback if canvas fails
     const resp = await fetch(photoUrl);
     const blob = await resp.blob();
-    const file = new File([blob], 'vibe-match-photo.jpg', { type: blob.type || 'image/jpeg' });
+    const file = new File([blob], 'vibe-match-photo.jpg', {
+      type: blob.type || 'image/jpeg',
+      lastModified: Date.now(),
+    });
     prepared = {
       file,
       mimeType: file.type,
@@ -217,9 +220,12 @@ export async function executeSocialShare(
     if (canShareWithFiles) {
       onStatusUpdate?.('Opening device share sheet with your photo...');
       try {
+        // CRITICAL: Send strictly `files: [prepared.file]`.
+        // Omitting `title`, `text`, and `url` ensures mobile OS (Android/iOS) classifies this
+        // as a Media file intent rather than a text/chat intent, preventing Instagram from
+        // routing to Direct Message and failing with "Unsupported file".
         await navigator.share({
           files: [prepared.file],
-          title: song ? `${song.title} - ${song.artist}` : 'VibeMatch Photo',
         });
 
         return {
