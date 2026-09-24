@@ -8,12 +8,14 @@ export interface SamplePhoto {
   curatedProfile: DetectedVibeData;
 }
 
+const BASE = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+
 export const SAMPLE_PHOTOS: SamplePhoto[] = [
   {
     id: 'vintage-mirror',
     title: 'Vintage Elegant Portrait',
     vibeTag: 'Vintage',
-    url: '/vintage_mirror_photo.jpg',
+    url: `${BASE}vintage_mirror_photo.jpg`,
     curatedProfile: {
       primaryVibe: 'Elegant',
       secondaryVibe: 'Nostalgic',

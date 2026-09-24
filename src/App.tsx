@@ -10,7 +10,8 @@ import { matchSoundtrackWithDiagnostics } from './utils/musicMatcher';
 import { audioPlayerService } from './utils/audioPlayerService';
 
 export default function App() {
-  const [photoUrl, setPhotoUrl] = useState<string | null>('/vintage_mirror_photo.jpg');
+  const defaultPhoto = `${import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`}vintage_mirror_photo.jpg`;
+  const [photoUrl, setPhotoUrl] = useState<string | null>(defaultPhoto);
   const [selectedLanguage, setSelectedLanguage] = useState<LanguageOption>('All Languages');
   const [selectedDestination, setSelectedDestination] = useState<DestinationOption>('Instagram Story');
   const [isMatching, setIsMatching] = useState<boolean>(false);
