@@ -1,0 +1,7 @@
+{
+  "name": "VIBE MATCH",
+  "description": "Your photo has a vibe. We’ll find the music. Visual mood analysis and curated soundtrack recommendations for your social posts.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
